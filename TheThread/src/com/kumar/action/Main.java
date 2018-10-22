@@ -20,24 +20,38 @@ public class Main {
 		toAccount.setAccountType("Saving");
 		
 		TransactionThread txnThread1 = new TransactionThread();
-		TransactionThread txnThread2 = new TransactionThread();
+		//TransactionThread txnThread2 = new TransactionThread();
 		
-		txnThread1.setTxnAmount(10000);
-		txnThread1.setTxnType("DEBIT");
+		
+		//txnThread1.setTxnType("DEBIT");
 		txnThread1.setFromAccount(fromAccount);
 		
-		txnThread2.setTxnAmount(20000);
-		txnThread2.setTxnType("CREDIT");
-		txnThread2.setToAccount(toAccount);
+		//txnThread2.setTxnType("CREDIT");
+		txnThread1.setToAccount(toAccount);
 		
-		Thread TransThread1 = new Thread(txnThread1);
-		Thread TransThread2 = new Thread(txnThread2);
-		TransThread1.start();
-		TransThread2.start();
+		//Thread TransThread1 = new Thread(txnThread1);
+		//Thread TransThread2 = new Thread(txnThread2);
+		
+		for (int i = 0; i < 10; i++) {
+			//TransThread1.start();
+			//TransThread2.start();
+			
+			txnThread1.setTxnDrAmount(i*1000);
+			txnThread1.setTxnCrAmount(i*1000);
+			
+			Thread TransThread = getThreads(txnThread1);
+			
+			System.out.println("*****"+TransThread.getName()+ " = "+ (i*100));
+			
+			TransThread.start();
+		}
 		System.out.println("End");
-		
-		
 		
 	}
 
+	public static Thread getThreads(TransactionThread ThreadClass)
+	{
+		return new Thread(ThreadClass);
+	}
+	
 }
