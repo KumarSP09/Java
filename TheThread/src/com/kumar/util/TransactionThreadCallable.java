@@ -85,19 +85,10 @@ public class TransactionThreadCallable implements Callable<TransactionOutput> {
 	@Override
 	public TransactionOutput call() throws Exception {
 		// TODO Auto-generated method stub
-		double Drbalance = accountService.DebitAccount(this.getFromAccount(), this.getTxnDrAmount());
-		//System.out.println(Thread.currentThread().getName()+ " --> A/c " +this.getFromAccount().getAccountNumber()+" Debit for "+
-		      //      this.getTxnDrAmount() +" and Current Balance is "+ Drbalance);
-	//}
-	
 		
-	//else if (getTxnType() == "CREDIT") 
-	//{
-		//System.out.println(Thread.currentThread().getName());
+		double Drbalance = accountService.DebitAccount(this.getFromAccount(), this.getTxnDrAmount());
 		double Crbalance = accountService.CreditAccount(this.getToAccount(), this.getTxnCrAmount());
-		//System.out.println(Thread.currentThread().getName()+" --> A/c "+this.getToAccount().getAccountNumber()+" Credit with "
-			//	+this.getTxnCrAmount()+ " and Current Balance is "+Crbalance);
-
+		
 		TxnOut.setDebit(Thread.currentThread().getName()+ " --> A/c " +this.getFromAccount().getAccountNumber()+" Debit for "+
 		            this.getTxnDrAmount() +" and Current Balance is "+ Drbalance);
 		
