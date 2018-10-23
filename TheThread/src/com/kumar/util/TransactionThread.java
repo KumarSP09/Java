@@ -54,7 +54,7 @@ public class TransactionThread implements Runnable {
 		// TODO Auto-generated method stub
 		
 		synchronized (accountService) {
-			
+	
 		
 		// if (getTxnType() == "DEBIT") 
 		//{
