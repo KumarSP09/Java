@@ -1,5 +1,7 @@
 package com.kumar.util;
 
+import javax.swing.plaf.synth.SynthColorChooserUI;
+
 import com.kumar.model.Accounts;
 import com.kumar.service.AccountService;
 
@@ -51,6 +53,9 @@ public class TransactionThread implements Runnable {
 	public void run() {
 		// TODO Auto-generated method stub
 		
+		synchronized (accountService) {
+			
+		
 		// if (getTxnType() == "DEBIT") 
 		//{
 			//System.out.println(this.getFromAccount().getAccountBalance());
@@ -68,7 +73,8 @@ public class TransactionThread implements Runnable {
 					+this.getTxnCrAmount()+ " and Current Balance is "+Crbalance);
 		//}
 		
-		}
+	    }
+	}
 	
 	
 	
